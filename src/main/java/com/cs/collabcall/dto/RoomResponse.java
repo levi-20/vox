@@ -5,7 +5,7 @@ import java.util.UUID;
 
 
 public record RoomResponse(
-    Long id,
+    UUID id,
     String name,
     String description,
     LocalDateTime createAt,

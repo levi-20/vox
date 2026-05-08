@@ -67,11 +67,13 @@ public class User implements UserDetails {
 
     @Override
     public String getPassword() {
-        return this.password; // already have this field
+
+        return this.password;
     }
 
     @Override
     public String getUsername() {
-        return this.username; // already have this field
+
+        return this.username;
     }
 }

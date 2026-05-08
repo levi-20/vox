@@ -18,7 +18,7 @@ public class Room {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private UUID id;
 
     @Size(max = 100, message = "Name too long")
     @Pattern(regexp = "^[a-zA-Z0-9 _,.-]*$", message = "Invalid characters")

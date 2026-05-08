@@ -1,6 +1,6 @@
 CREATE TABLE rooms
 (
-    id          BIGSERIAL PRIMARY KEY,
+    id          UUID PRIMARY KEY,
     name        VARCHAR(100) NOT NULL,
     description VARCHAR(500),
     created_by  UUID         REFERENCES users (id) ON DELETE SET NULL,
