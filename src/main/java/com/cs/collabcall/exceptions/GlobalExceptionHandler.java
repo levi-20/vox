@@ -7,7 +7,7 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
@@ -19,7 +19,7 @@ public class GlobalExceptionHandler {
                     HttpStatus.NOT_FOUND.getReasonPhrase(),
                     exception.getMessage(),
                     HttpStatus.NOT_FOUND.value(),
-                    LocalDateTime.now()
+                    ZonedDateTime.now()
                 )
             );
     }
@@ -31,7 +31,7 @@ public class GlobalExceptionHandler {
                     HttpStatus.CONFLICT.getReasonPhrase(),
                     exception.getMessage(),
                     HttpStatus.CONFLICT.value(),
-                    LocalDateTime.now()
+                    ZonedDateTime.now()
                 )
             );
     }
@@ -43,7 +43,7 @@ public class GlobalExceptionHandler {
                 HttpStatus.UNAUTHORIZED.getReasonPhrase(),
                 "Invalid username or password",
                 HttpStatus.UNAUTHORIZED.value(),
-                LocalDateTime.now()
+                ZonedDateTime.now()
             ));
     }
 }

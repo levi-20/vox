@@ -10,6 +10,9 @@ import com.cs.collabcall.repository.MessageRepository;
 import com.cs.collabcall.repository.RoomRepository;
 import com.cs.collabcall.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
@@ -25,6 +28,7 @@ public class MessageService {
     private final MessageRepository messageRepository;
     private final RoomRepository roomRepository;
     private final UserRepository userRepository;
+    private static final int PAGESIZE = 20;
 
     public MessageResponse save(UUID roomId, MessageRequest messageRequest) {
 
@@ -43,9 +47,10 @@ public class MessageService {
         return toMessageResponse(messageRepository.save(message));
     }
 
-    public List<MessageResponse> getMessages(UUID roomId) {
+    public List<MessageResponse> getMessages(UUID roomId, int page) {
 
-        return messageRepository.findByRoomId(roomId)
+        Pageable pageable = PageRequest.of(page, PAGESIZE, Sort.Direction.DESC, "sentAt");
+        return messageRepository.findByRoomId(roomId, pageable)
             .stream()
             .map(this::toMessageResponse)
             .toList();

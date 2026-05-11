@@ -1,14 +1,12 @@
 package com.cs.collabcall.entity;
 
-
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.util.UUID;
 
 @Data
@@ -29,10 +27,9 @@ public class Room {
 
     @CreationTimestamp
     @Column(name = "created_at", updatable = false)
-    private LocalDateTime createdAt;
+    private ZonedDateTime createdAt;
 
-    @UpdateTimestamp
-    @Column(name = "created_by", updatable = false)
-    private UUID createdBy;
-
+    @ManyToOne
+    @JoinColumn(name = "created_by", updatable = false)
+    private User createdBy;
 }

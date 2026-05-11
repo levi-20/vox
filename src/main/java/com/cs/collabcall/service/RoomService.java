@@ -46,7 +46,8 @@ public class RoomService {
         User user = userRepository.findByUsername(username)
             .orElseThrow(() -> new UsernameNotFoundException(username));
 
-        room.setCreatedBy(user.getId());
+        room.setCreatedBy(user);
+        log.info("Creating room: {}", room);
         log.info("Creating room with name: {}", room.getName());
         return roomResponse(repository.save(room));
     }
@@ -77,7 +78,7 @@ public class RoomService {
             room.getName(),
             room.getDescription(),
             room.getCreatedAt(),
-            room.getCreatedBy()
+            room.getCreatedBy().getId()
         );
     }
 

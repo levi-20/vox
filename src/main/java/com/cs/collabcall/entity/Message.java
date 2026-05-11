@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.util.UUID;
 
 @Data
@@ -29,6 +29,6 @@ public class Message {
 
     @CreationTimestamp
     @Column(nullable = false, name = "sent_at")
-    private LocalDateTime sentAt;
+    private ZonedDateTime sentAt;
 
 }

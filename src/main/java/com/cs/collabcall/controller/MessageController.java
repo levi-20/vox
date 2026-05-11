@@ -17,11 +17,14 @@ import java.util.UUID;
 public class MessageController {
 
     private final MessageService messageService;
+    private static final int PAGESIZE = 20;
 
     @GetMapping("/{roomId}/messages")
-    public ResponseEntity<List<MessageResponse>> getMessages(@PathVariable UUID roomId) {
-
-        return ResponseEntity.status(HttpStatus.OK).body(this.messageService.getMessages(roomId));
+    public ResponseEntity<List<MessageResponse>> getMessages(
+        @PathVariable UUID roomId,
+        @RequestParam(defaultValue = "0") int page
+    ) {
+        return ResponseEntity.status(HttpStatus.OK).body(this.messageService.getMessages(roomId, page));
     }
 
     @PostMapping("/{roomId}/messages")

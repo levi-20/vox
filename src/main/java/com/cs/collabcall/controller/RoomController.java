@@ -1,19 +1,19 @@
 package com.cs.collabcall.controller;
 
-
+import com.cs.collabcall.dto.RoomCreateRequest;
 import com.cs.collabcall.dto.RoomResponse;
 import com.cs.collabcall.entity.Room;
-
 import com.cs.collabcall.service.RoomService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
 
-
+@Slf4j
 @RestController
 @RequestMapping("/api/rooms")
 public class RoomController {
@@ -45,7 +45,8 @@ public class RoomController {
     public ResponseEntity<List<RoomResponse>> searchRooms(
         @RequestParam(name = "q", required = false, defaultValue = "")
         @Pattern(regexp = "^[a-zA-Z0-9 _-]*$")
-        String searchTerm) {
+        String searchTerm
+    ) {
 
         return ResponseEntity.ok()
             .body(roomService.searchRooms(searchTerm));
@@ -66,7 +67,13 @@ public class RoomController {
     }
 
     @PostMapping
-    public ResponseEntity<RoomResponse> createRoom(@Valid @RequestBody Room room) {
+    public ResponseEntity<RoomResponse> createRoom(@Valid @RequestBody RoomCreateRequest roomCreateRequest) {
+
+        log.info("Creating room {}", roomCreateRequest);
+
+        Room room = new Room();
+        room.setName(roomCreateRequest.name());
+        room.setDescription(roomCreateRequest.description());
 
         return ResponseEntity.ok().body(roomService.createRoom(room));
     }

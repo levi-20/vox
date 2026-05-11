@@ -1,6 +1,6 @@
 package com.cs.collabcall.dto;
 
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.util.UUID;
 
 public record UserResponse(
@@ -9,7 +9,7 @@ public record UserResponse(
     String username,
     String email,
     String name,
-    LocalDateTime createdAt,
-    LocalDateTime updatedAt
+    ZonedDateTime createdAt,
+    ZonedDateTime updatedAt
 ) {
 }

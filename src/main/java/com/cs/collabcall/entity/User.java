@@ -1,6 +1,5 @@
 package com.cs.collabcall.entity;
 
-
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
@@ -13,7 +12,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
@@ -54,11 +53,11 @@ public class User implements UserDetails {
 
     @CreationTimestamp
     @Column(name = "created_at", updatable = false)
-    LocalDateTime createdAt;
+    ZonedDateTime createdAt;
 
     @UpdateTimestamp
     @Column(name = "updated_at")
-    LocalDateTime updatedAt;
+    ZonedDateTime updatedAt;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
