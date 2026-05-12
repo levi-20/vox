@@ -17,7 +17,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -29,7 +28,7 @@ public class MessageService {
     private final MessageRepository messageRepository;
     private final RoomRepository roomRepository;
     private final UserRepository userRepository;
-    final RoomService roomService;
+    private final RoomService roomService;
     private static final int PAGESIZE = 20;
 
     public MessageResponse save(UUID roomId, MessageRequest messageRequest) {
@@ -58,14 +57,13 @@ public class MessageService {
 
         Pageable pageable = PageRequest.of(page, PAGESIZE, Sort.Direction.DESC, "sentAt");
         log.debug("Getting messages for room {} {} {}", roomId, pageable, page);
-        List<RoomMessage> messages = messageRepository.findByRoomId(roomId, pageable)
-            .stream()
-            .map(this::toRoomMessage)
-            .toList();
 
         return new RoomMessageResponse(
             roomId,
-            messages
+            messageRepository.findByRoomId(roomId, pageable)
+                .stream()
+                .map(this::toRoomMessage)
+                .toList()
         );
     }
 
