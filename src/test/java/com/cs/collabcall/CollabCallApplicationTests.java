@@ -1,10 +1,10 @@
-package com.cs.collabcall;
+package com.cs.voxcall;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CollabCallApplicationTests {
+class voxCallApplicationTests {
 
     @Test
     void contextLoads() {

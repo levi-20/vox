@@ -12,10 +12,10 @@
     </parent>
 
     <groupId>com.cs</groupId>
-    <artifactId>collab-call</artifactId>
+    <artifactId>vox</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>collab-call</name>
-    <description>collab-call</description>
+    <name>vox</name>
+    <description>Vox is a realtime chat application</description>
 
     <properties>
         <java.version>21</java.version>

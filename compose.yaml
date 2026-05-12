@@ -1,9 +1,9 @@
-name: collab
+name: vox
 services:
   postgres:
     image: 'postgres:18-alpine'
     environment:
-      - 'POSTGRES_DB=collab'
+      - 'POSTGRES_DB=vox'
       - 'POSTGRES_USER=dev'
       - 'POSTGRES_PASSWORD=dev'
     ports:
@@ -11,12 +11,12 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U dev -d collab"]
+      test: ["CMD-SHELL", "pg_isready -U dev -d vox"]
       interval: 5s
       timeout: 5s
       retries: 5
 
-  collab:
+  vox:
     build: .
     ports:
       - "8080:8080"
