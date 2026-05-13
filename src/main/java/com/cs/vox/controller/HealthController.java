@@ -14,10 +14,7 @@ public class HealthController {
     public ResponseEntity<Map<String, String>> health() {
         return ResponseEntity.ok(Map.of(
             "status", "ok",
-            "service", "vox-call",
-            "time" , Instant.now().toString()
-
+            "service", "vox-backend"
         ));
     }
-
 }
