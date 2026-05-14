@@ -1,1 +1,74 @@
-@import "tailwindcss";
+body {
+    font-family: sans-serif;
+    padding: 0%;
+}
+
+/* **************     Navigation     *********************** */
+.navigation {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #373F37;
+    color: antiquewhite;
+    height: 60px;
+    position: sticky;
+    padding: auto;
+    margin: -8px -8px 0px -8px;
+    z-index: 10;
+}
+
+.nav-logo {
+    align-content: center;
+    padding: 2px 5px;
+    font-size: 40px;
+
+}
+
+.nav {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+}
+
+.nav-item {
+    padding: 20px 20px;
+}
+
+.nav-item:hover {
+    color: black;
+}
+
+.nav-item.active {
+    color: black;
+}
+
+/***************     Login Page     ***************/
+
+.btn {
+    border-radius: 5px;
+    padding: 5px 20px;
+}
+
+.login-title {
+    align-items: center;
+}
+
+.login-box {
+    margin: auto;
+}
+
+.login-item {}
+
+.btn {
+    cursor: pointer;
+}
+
+.login-btn {
+    background-color: #373F37;
+    color: #e5e5e2;
+}
+
+.login-btn:hover {
+    background-color: #373F37;
+    color: #e5e5e2;
+}
