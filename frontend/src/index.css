@@ -1,6 +1,18 @@
 body {
     font-family: sans-serif;
-    padding: 0%;
+    margin: 0;
+    background-color: #404940;
+
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.btn {
+    border-radius: 5px;
+    padding: 5px 20px;
 }
 
 /* **************     Navigation     *********************** */
@@ -13,7 +25,8 @@ body {
     height: 60px;
     position: sticky;
     padding: auto;
-    margin: -8px -8px 0px -8px;
+    border-color: #e5e5e2;
+    /* margin: -8px -8px 0px -8px; */
     z-index: 10;
 }
 
@@ -44,28 +57,51 @@ body {
 
 /***************     Login Page     ***************/
 
-.btn {
-    border-radius: 5px;
-    padding: 5px 20px;
+.login-box {
+    margin: auto;
+    width: 400px;
+    font-size: 25px;
 }
 
 .login-title {
-    align-items: center;
-}
-
-.login-box {
     margin: auto;
 }
 
-.login-item {}
+.login-form {
+    flex-direction: column;
+    display: block;
+}
+
+.login-item {
+    flex-direction: column;
+    margin: auto;
+    width: 300px;
+    padding: 10px 10px;
+}
+
+.input-label {
+    margin: auto;
+    padding: 20px;
+}
+
+.input-item {
+    width: 250px;
+    height: 29px;
+    border-radius: 4px;
+}
 
 .btn {
     cursor: pointer;
+    width: 100px;
 }
 
 .login-btn {
     background-color: #373F37;
     color: #e5e5e2;
+    width: 250px;
+    height: 40px;
+    box-shadow: none;
+    font-size: 25px;
 }
 
 .login-btn:hover {
